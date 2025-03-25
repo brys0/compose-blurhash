@@ -31,15 +31,15 @@ actual fun BlurHashImage(hash: String, modifier: Modifier) {
     val computedMatrix = remember { calculateColorMatrix(hash) } ?: return
     compositeRuntimeEffect.setFloatUniform(
         "num",
-        computedMatrix.size.height.toFloat(),
-        computedMatrix.size.width.toFloat()
+        computedMatrix.size.width.toFloat(),
+        computedMatrix.size.height.toFloat()
     )
 
     compositeRuntimeEffect.setFloatUniform("colors", computedMatrix.colors)
     compositeRuntimeEffect.setFloatUniform("startPos", 0f, 0f)
 
     Box(
-        modifier = Modifier.background(Color.Red)
+        modifier = Modifier.background(Color.Red.copy(alpha = 0.3f))
             .onSizeChanged {
                 compositeRuntimeEffect.setFloatUniform("iResolution", it.width.toFloat(), it.height.toFloat())
             }
