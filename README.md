@@ -6,7 +6,7 @@ Using SKSL/AGSL for the best possible performance compared to regular bitmap alt
 - [x] WasmJS/Browser
 - [x] Desktop/JVM 
 - [x] iOS/Apple
-- [ ] Android (Coming Soon)
+- [x] Android
 
 
 ## Usage
