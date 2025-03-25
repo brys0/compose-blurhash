@@ -13,9 +13,6 @@ import androidx.compose.ui.graphics.ShaderBrush
 import com.brys.compose.blurhash.shader.blurhashComposeSKSL
 import com.brys.compose.blurhash.shader.calculateColorMatrix
 
-/**
- * **THIS CURRENTLY DOES NOT WORK FOR ANDROID DEVICES!**
- */
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 actual fun BlurHashImage(hash: String, modifier: Modifier) {
