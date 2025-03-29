@@ -113,7 +113,6 @@ publishing {
 
             from(components["kotlin"])
             artifact(tasks["sourcesJar"])
-            artifact(tasks["javadocJar"])
 
             pom {
                 name = "Compose Blurhash"
