@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
  *  - Desktop - Working
  *  - WasmJS - Working
  *  - iOS - Working
- *  - Android - **NOT WORKING**
+ *  - Android - Working
  *
  */
 @Composable
-expect fun BlurHashImage(hash: String, modifier: Modifier = Modifier)
+expect fun BlurHashImage(hash: String, contentDescription: String, modifier: Modifier = Modifier)

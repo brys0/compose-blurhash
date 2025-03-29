@@ -10,9 +10,9 @@ import com.brys.compose.blurhash.BlurHashImage
 @Composable
 fun Sample() {
     Box(modifier = Modifier.fillMaxSize()) {
-        Text("bruh")
         BlurHashImage(
             "URGtW@NM}FV?w7={wOi{xYi%s,sm-CNZnPxt",
+            contentDescription = "Hi",
             modifier = Modifier.fillMaxSize()
         )
     }

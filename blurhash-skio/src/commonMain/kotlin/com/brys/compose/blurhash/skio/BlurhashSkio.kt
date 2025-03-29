@@ -15,7 +15,7 @@ import org.jetbrains.skia.RuntimeEffect
 import org.jetbrains.skia.RuntimeShaderBuilder
 
 @Composable
-fun CreateImageBlurHash(hash: String, modifier: Modifier = Modifier) {
+fun CreateImageBlurHash(hash: String, contentDescription: String, modifier: Modifier = Modifier) {
     val compositeRuntimeEffect = RuntimeEffect.makeForShader(blurhashComposeSKSL)
     val compositeRuntimeBuilder = RuntimeShaderBuilder(compositeRuntimeEffect)
     val computedMatrix = remember { calculateColorMatrix(hash) } ?: return

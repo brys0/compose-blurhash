@@ -3,7 +3,12 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 //import com.vanniktech.maven.publish.SonatypeHost
 
+val group = "com.brys.compose"
+val version = "0.0.1-ALPHA"
+
 plugins {
+    `maven-publish`
+
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
@@ -88,7 +93,7 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        minSdk = 33
+        minSdk = 21
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -99,36 +104,42 @@ android {
     }
 }
 
-//mavenPublishing {
-////    publishToMavenCentral(SonatypeHost.DEFAULT)
-//    // or when publishing to https://s01.oss.sonatype.org
-//    publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
-//    signAllPublications()
-//    coordinates("com.example.mylibrary", "mylibrary-runtime", "1.0.0")
-//
-//    pom {
-//        name.set(project.name)
-//        description.set("A description of what my library does.")
-//        inceptionYear.set("2023")
-//        url.set("https://github.com/username/mylibrary/")
-//        licenses {
-//            license {
-//                name.set("The Apache License, Version 2.0")
-//                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-//                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-//            }
-//        }
-//        developers {
-//            developer {
-//                id.set("username")
-//                name.set("User Name")
-//                url.set("https://github.com/username/")
-//            }
-//        }
-//        scm {
-//            url.set("https://github.com/username/mylibrary/")
-//            connection.set("scm:git:git://github.com/username/mylibrary.git")
-//            developerConnection.set("scm:git:ssh://git@github.com/username/mylibrary.git")
-//        }
-//    }
-//}
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = group
+            artifactId = "blurhash"
+            version = version
+
+            from(components["kotlin"])
+            artifact(tasks["sourcesJar"])
+            artifact(tasks["javadocJar"])
+
+            pom {
+                name = "Compose Blurhash"
+                description = "A high performance implementation of blurhash for Compose Multiplatform. Utilizes SKSL shaders for performant rendering."
+                url = "https://github.com/brys0/compose-blurhash"
+
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "https://opensource.org/license/mit"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = "brys0"
+                        name = "Bryson T."
+                    }
+                }
+
+                scm {
+                    connection = "scm:git:git://github.com/brys0/compose-blurhash.git"
+                    developerConnection = "scm:git:ssh://github.com/brys0/compose-blurhash.git"
+                    url = "https://github.com/brys0/compose-blurhash"
+                }
+            }
+        }
+    }
+}
