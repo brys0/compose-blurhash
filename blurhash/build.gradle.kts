@@ -1,13 +1,11 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-
-//import com.vanniktech.maven.publish.SonatypeHost
-
-val group = "com.brys.compose"
-val version = "0.0.1-ALPHA"
+val group = "io.github.brys0"
+val version = "0.0.2-ALPHA"
 
 plugins {
-    `maven-publish`
+    id("com.vanniktech.maven.publish") version "0.31.0-rc2"
 
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -104,41 +102,34 @@ android {
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = group
-            artifactId = "blurhash"
-            version = version
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
 
-            from(components["kotlin"])
-            artifact(tasks["sourcesJar"])
+    coordinates(group, "blurhash", version)
+    pom {
+        name = "Compose Blurhash"
+        description = "A high performance implementation of blurhash for Compose Multiplatform. Utilizes SKSL shaders for performant rendering."
+        url = "https://github.com/brys0/compose-blurhash"
 
-            pom {
-                name = "Compose Blurhash"
-                description = "A high performance implementation of blurhash for Compose Multiplatform. Utilizes SKSL shaders for performant rendering."
-                url = "https://github.com/brys0/compose-blurhash"
-
-                licenses {
-                    license {
-                        name = "MIT License"
-                        url = "https://opensource.org/license/mit"
-                    }
-                }
-
-                developers {
-                    developer {
-                        id = "brys0"
-                        name = "Bryson T."
-                    }
-                }
-
-                scm {
-                    connection = "scm:git:git://github.com/brys0/compose-blurhash.git"
-                    developerConnection = "scm:git:ssh://github.com/brys0/compose-blurhash.git"
-                    url = "https://github.com/brys0/compose-blurhash"
-                }
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://opensource.org/license/mit"
             }
+        }
+
+        developers {
+            developer {
+                id = "brys0"
+                name = "Bryson T."
+            }
+        }
+
+        scm {
+            connection = "scm:git:git://github.com/brys0/compose-blurhash.git"
+            developerConnection = "scm:git:ssh://github.com/brys0/compose-blurhash.git"
+            url = "https://github.com/brys0/compose-blurhash"
         }
     }
 }
