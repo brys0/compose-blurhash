@@ -1,17 +1,14 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 //import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
+    alias(libs.plugins.mavenPublish)
     alias(libs.plugins.kotlinMultiplatform)
-//    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-//    id("com.android.library")
-//    id("org.jetbrains.compose")
-//    id("org.jetbrains.dokka")
-//    id("com.vanniktech.maven.publish")
 }
 
 kotlin {
@@ -60,56 +57,35 @@ kotlin {
     }
 }
 
-//android {
-//    compileSdk = 33
-//    namespace = "com.brys.compose.blurhash.shader"
-//
-//    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-//    sourceSets["main"].res.srcDirs("src/androidMain/res")
-//    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
-//
-//    defaultConfig {
-//        minSdk = 33
-//    }
-//    compileOptions {
-//        sourceCompatibility = JavaVersion.VERSION_17
-//        targetCompatibility = JavaVersion.VERSION_17
-//    }
-//    kotlin {
-//        jvmToolchain(17)
-//    }
-//}
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    coordinates(rootProject.group.toString(), "blurhash-skio", rootProject.version.toString())
 
-//mavenPublishing {
-////    publishToMavenCentral(SonatypeHost.DEFAULT)
-//    // or when publishing to https://s01.oss.sonatype.org
-//    publishToMavenCentral(SonatypeHost.S01, automaticRelease = true)
-//    signAllPublications()
-//    coordinates("com.example.mylibrary", "mylibrary-runtime", "1.0.0")
-//
-//    pom {
-//        name.set(project.name)
-//        description.set("A description of what my library does.")
-//        inceptionYear.set("2023")
-//        url.set("https://github.com/username/mylibrary/")
-//        licenses {
-//            license {
-//                name.set("The Apache License, Version 2.0")
-//                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-//                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-//            }
-//        }
-//        developers {
-//            developer {
-//                id.set("username")
-//                name.set("User Name")
-//                url.set("https://github.com/username/")
-//            }
-//        }
-//        scm {
-//            url.set("https://github.com/username/mylibrary/")
-//            connection.set("scm:git:git://github.com/username/mylibrary.git")
-//            developerConnection.set("scm:git:ssh://git@github.com/username/mylibrary.git")
-//        }
-//    }
-//}
+    pom {
+        name = "Compose Blurhash"
+        description = "A high performance implementation of blurhash for Compose Multiplatform. Utilizes SKSL shaders for performant rendering."
+        url = "https://github.com/brys0/compose-blurhash"
+
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://opensource.org/license/mit"
+            }
+        }
+
+        developers {
+            developer {
+                id = "brys0"
+                name = "Bryson T."
+            }
+        }
+
+        scm {
+            connection = "scm:git:git://github.com/brys0/compose-blurhash.git"
+            developerConnection = "scm:git:ssh://github.com/brys0/compose-blurhash.git"
+            url = "https://github.com/brys0/compose-blurhash"
+        }
+    }
+
+    signAllPublications()
+}

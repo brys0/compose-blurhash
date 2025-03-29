@@ -1,11 +1,8 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
-val group = "io.github.brys0"
-val version = "0.0.2-ALPHA"
-
 plugins {
-    id("com.vanniktech.maven.publish") version "0.31.0-rc2"
+    alias(libs.plugins.mavenPublish)
 
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
@@ -104,9 +101,8 @@ android {
 
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
-    signAllPublications()
+    coordinates(rootProject.group.toString(), "blurhash", rootProject.version.toString())
 
-    coordinates(group, "blurhash", version)
     pom {
         name = "Compose Blurhash"
         description = "A high performance implementation of blurhash for Compose Multiplatform. Utilizes SKSL shaders for performant rendering."
@@ -132,4 +128,6 @@ mavenPublishing {
             url = "https://github.com/brys0/compose-blurhash"
         }
     }
+
+    signAllPublications()
 }
