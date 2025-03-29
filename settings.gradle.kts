@@ -1,4 +1,4 @@
-rootProject.name = "compose-multiplatform-library-template"
+rootProject.name = "compose-blurhash"
 
 include(":sample:androidApp")
 include(":blurhash")
