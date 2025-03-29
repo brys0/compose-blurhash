@@ -1,8 +1,5 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-
-//import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     alias(libs.plugins.mavenPublish)
@@ -12,12 +9,7 @@ plugins {
 }
 
 kotlin {
-//    androidTarget {
-//        publishLibraryVariants("release")
-//    }
-
     jvm("desktop")
-
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {

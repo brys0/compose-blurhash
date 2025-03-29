@@ -80,7 +80,7 @@ kotlin {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 35
     namespace = "com.brys.compose.blurhash"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

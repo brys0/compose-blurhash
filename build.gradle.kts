@@ -1,8 +1,4 @@
-import com.android.build.gradle.internal.scope.ProjectInfo.Companion.getBaseName
-import com.vanniktech.maven.publish.MavenPublishBaseExtension
-import com.vanniktech.maven.publish.SonatypeHost
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
-
 
 group = "io.github.brys0"
 version = "0.0-3-ALPHA"

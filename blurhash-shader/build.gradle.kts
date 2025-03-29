@@ -1,8 +1,5 @@
 import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-
-//import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     alias(libs.plugins.mavenPublish)
@@ -63,7 +60,7 @@ kotlin {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 35
     namespace = "com.brys.compose.blurhash.shader"
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
