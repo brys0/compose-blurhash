@@ -1,7 +1,7 @@
 import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 group = "io.github.brys0"
-version = "0.0-3-ALPHA"
+version = "0.0-4-ALPHA"
 
 plugins {
     alias(libs.plugins.mavenPublish) apply false

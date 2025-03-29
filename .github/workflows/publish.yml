@@ -24,4 +24,6 @@ jobs:
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_PRIVATE_KEY }}
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
-        run: ./gradlew blurhash:publishAllPublicationsToMavenCentralRepository
+        run: |
+          ./gradlew publish
+          ./gradlew publishAllPublicationsToMavenCentralRepository
