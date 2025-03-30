@@ -10,6 +10,14 @@ Using SKSL/AGSL for the best possible performance compared to regular bitmap alt
 
 
 ## Usage
+
+Add this to your build.gradle.kts
+
+```kt
+implementation("io.github.brys0:blurhash:0.0-4-ALPHA")
+```
+
+You can now use it like this 
 ```kt
 @Composable
 fun MyComposable() {
